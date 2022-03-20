@@ -36,10 +36,10 @@ if __name__ == '__main__':
         with open(sys.argv[2]) as fp:
             right_input = list(csv.DictReader(fp))
     else:
-        print(f"USAGE: {sys.argv[0]} <left.csv> <right.csv>", file=sys.stderr)
+        print("USAGE:", sys.argv[0], "<left.csv> <right.csv>", file=sys.stderr)
         sys.exit(1)
 
     common_elements = common_ids_with_bug(left_input, right_input)
-    print(f"IDs that are common to '{sys.argv[1]}' and '{sys.argv[2]}'")
+    print("IDs that are common to", sys.argv[1], "and", sys.argv[2])
     for element in common_elements:
-        print(f"    {element}")
+        print("    ", element)
