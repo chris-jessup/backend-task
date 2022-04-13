@@ -4,7 +4,7 @@ import sys
 def common_ids_with_bug(left, right):
     """ 
 
-    Given two lists dictionaries with the following shape:
+    Given two lists of dictionaries with the following shape:
         {
             'id':number,
             'name':string
