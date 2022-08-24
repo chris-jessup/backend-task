@@ -8,12 +8,12 @@ import (
 )
 
 type IdNameRecord struct {
-    Id      string
-    Name    string
+    id      string
+    name    string
 }
 
 
-func readCsvToRecords(filename string) []IdNameRecord {
+func readCsvToIdNameRecords(filename string) []IdNameRecord {
 
     // open file
     f, err := os.Open(filename)
@@ -39,9 +39,9 @@ func readCsvToRecords(filename string) []IdNameRecord {
             var record IdNameRecord
             for j, field := range line {
                 if j == 0 {
-                    record.Id = field
+                    record.id = field
                 } else if j == 1 {
-                    record.Name = field
+                    record.name = field
                 }
             }
             records = append(records, record)
@@ -52,18 +52,35 @@ func readCsvToRecords(filename string) []IdNameRecord {
 }
 
 func common_ids_with_bug(left []IdNameRecord, right []IdNameRecord) []string {
+    /*
+    Given two lists of records with the following shape:
+        {
+            id:string,
+            name:string
+        }
+    return a tuple of all the IDs that are common to both lists
 
-    var common_ids []string
+    Warning: This version has a bug!!!
+        1. What is the bug?
+        2. How would you solve it?
+        3. How would you test it?
+    */
 
-    for _, element := range left {
+    var commonElements []IdNameRecord
+
+    for _, leftElement := range left {
         for _, rightElement := range right {
-            if element == rightElement {
-                common_ids = append(common_ids, element.Id)
+            if leftElement == rightElement {
+                commonElements = append(commonElements, leftElement)
             }
         }
     }
 
-    return common_ids
+    var commonIds []string
+    for _, element := range commonElements {
+        commonIds = append(commonIds, element.id)
+    }
+    return commonIds
 }
 
 func main() {
@@ -75,8 +92,8 @@ func main() {
     leftFileName := os.Args[1]
     rightFileName := os.Args[2]
 
-    leftRecords := readCsvToRecords(leftFileName)
-    rightRecords := readCsvToRecords(rightFileName)
+    leftRecords := readCsvToIdNameRecords(leftFileName)
+    rightRecords := readCsvToIdNameRecords(rightFileName)
 
     common := common_ids_with_bug(leftRecords, rightRecords)
 
@@ -85,6 +102,4 @@ func main() {
         fmt.Println("    ", id)
     }
 
-    // // print the array
-    // fmt.Printf("%+v\n", shoppingList)
 }

@@ -21,9 +21,7 @@ def common_ids_with_bug(left, right):
     common = []
     for element in left:
         if element in right:
-            common.append(element)
-
-    common = [x['id'] for x in common]
+            common.append(element['id'])
 
     return common
 
