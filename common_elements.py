@@ -11,17 +11,18 @@ def common_ids_with_bug(left, right):
         }
     return a tuple of all the IDs that are common to both lists
 
-    Warning: This version has a bug!!!
-        1. What is the bug?
+    Warning: This version has a bug, or possibly two!!!
+        1. What is the bug(s)?
         2. How would you solve it?
         3. How would you test it?
 
     """
 
     common = []
-    for element in left:
-        if element in right:
-            common.append(element['id'])
+    for l in left:
+        for r in right:
+            if l == r:
+                common.append(l)
 
     return common
 

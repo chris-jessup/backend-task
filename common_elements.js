@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-console.log(process.argv[2], process.argv[3])
 
 function csvToJSON(filename) {
     let csv = []
@@ -23,28 +22,25 @@ function csvToJSON(filename) {
 
 
 function common_ids_with_bug(left, right){
-    // """ 
+    /*
+        Given two lists of objects with the following shape:
+            {
+                'id':number,
+                'name':string
+            }
+        return a list of all the IDs that are common to both lists
 
-    // Given two lists of dictionaries with the following shape:
-    //     {
-    //         'id':number,
-    //         'name':string
-    //     }
-    // return a tuple of all the IDs that are common to both lists
-
-    // Warning: This version has a bug!!!
-    //     1. What is the bug?
-    //     2. How would you solve it?
-    //     3. How would you test it?
-
-    // """
+        Warning: This version has a bug!!!
+            1. What is the bug?
+            2. How would you solve it?
+            3. How would you test it?
+    */
 
     common = []
     left.forEach((l) => {
         right.forEach((r) => {
-            console.log(l,r)
             if ( JSON.stringify(l) == JSON.stringify(r) ) {
-                common.push(l)
+                common.push(l.id)
             }
         })
     })
@@ -52,7 +48,15 @@ function common_ids_with_bug(left, right){
     return common
 }
 
-left = csvToJSON(process.argv[2])
-right = csvToJSON(process.argv[3])
+function main(){
+    if( ! process.argv[2] || ! process.argv[3] ){
+        console.log("USAGE:", process.argv[1], "<left csv>", "<right csv>")
+        return 
+    }
+    left = csvToJSON(process.argv[2])
+    right = csvToJSON(process.argv[3])
 
-console.log(common_ids_with_bug(left, right))
+    console.log(common_ids_with_bug(left, right))
+}
+
+main()
