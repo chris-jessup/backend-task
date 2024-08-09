@@ -21,7 +21,7 @@ function csvToJSON(filename) {
 
 
 
-function common_ids_with_bug(left, right){
+function common_ids(left, right){
     /*
         Given two lists of objects with the following shape:
             {
@@ -29,18 +29,13 @@ function common_ids_with_bug(left, right){
                 'name':string
             }
         return a list of all the IDs that are common to both lists
-
-        Warning: This version has a bug!!!
-            1. What is the bug?
-            2. How would you solve it?
-            3. How would you test it?
     */
 
     common = []
     left.forEach((l) => {
         right.forEach((r) => {
             if ( JSON.stringify(l) == JSON.stringify(r) ) {
-                common.push(l.id)
+                common.push(l)
             }
         })
     })
@@ -56,7 +51,7 @@ function main(){
     left = csvToJSON(process.argv[2])
     right = csvToJSON(process.argv[3])
 
-    console.log(common_ids_with_bug(left, right))
+    console.log(common_ids(left, right))
 }
 
 main()

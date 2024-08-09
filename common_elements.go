@@ -51,7 +51,7 @@ func readCsvToIdNameRecords(filename string) []IdNameRecord {
     return records
 }
 
-func common_ids_with_bug(left []IdNameRecord, right []IdNameRecord) []string {
+func common_ids(left []IdNameRecord, right []IdNameRecord) []string {
     /*
     Given two lists of records with the following shape:
         {
@@ -59,11 +59,6 @@ func common_ids_with_bug(left []IdNameRecord, right []IdNameRecord) []string {
             name:string
         }
     return a tuple of all the IDs that are common to both lists
-
-    Warning: This version has a bug!!!
-        1. What is the bug?
-        2. How would you solve it?
-        3. How would you test it?
     */
 
     var commonElements []IdNameRecord
@@ -95,7 +90,7 @@ func main() {
     leftRecords := readCsvToIdNameRecords(leftFileName)
     rightRecords := readCsvToIdNameRecords(rightFileName)
 
-    common := common_ids_with_bug(leftRecords, rightRecords)
+    common := common_ids(leftRecords, rightRecords)
 
     fmt.Println("IDs that are common to", leftFileName, "and", rightFileName)
     for _, id := range common {

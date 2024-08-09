@@ -18,13 +18,10 @@ This is meant to demonstrate some familiarity with:
 3. Look at any documentation to work out the correct operation
 4. Compare the actual output with the expected output
 5. Identify the bug(s)
-6. (optional) Fix the bug(s)!
+6. Fix the bug(s)!
 7. Identify how to avoid this bug(s) in future.
-6. (BONUS POINTS!) How would you improve this function's performance?
+6. For bonus points, how would you improve this function's performance?
 
-## Things we do and don't care about
-We don't necessarily care that you are able to solve the bug in the program, we are more interested in your ability
-to demonstrate familiarity with the tools of the trade
 
 ## Requirements
 

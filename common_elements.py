@@ -1,7 +1,7 @@
 import csv
 import sys
 
-def common_ids_with_bug(left, right):
+def common_ids(left, right):
     """ 
 
     Given two lists of dictionaries with the following shape:
@@ -9,13 +9,7 @@ def common_ids_with_bug(left, right):
             'id':number,
             'name':string
         }
-    return a tuple of all the IDs that are common to both lists
-
-    Warning: This version has a bug, or possibly two!!!
-        1. What is the bug(s)?
-        2. How would you solve it?
-        3. How would you test it?
-
+    return a list of all the IDs that are common to both lists
     """
 
     common = []
@@ -38,7 +32,7 @@ if __name__ == '__main__':
         print("USAGE:", sys.argv[0], "<left.csv> <right.csv>", file=sys.stderr)
         sys.exit(1)
 
-    common_elements = common_ids_with_bug(left_input, right_input)
+    common_elements = common_ids(left_input, right_input)
     print("IDs that are common to", sys.argv[1], "and", sys.argv[2])
     for element in common_elements:
         print("    ", element)
